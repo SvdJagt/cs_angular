@@ -1,0 +1,69 @@
+
+
+/* Make sure the navbar is always at the top of the screen */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #bdf1d1; /* Optional: background color for the navbar */
+    z-index: 1000; /* Ensures the navbar is on top of other elements */
+    padding: 10px 20px; /* Adds padding inside the navbar */
+    border-bottom: 1px solid #00000075; /* Optional: adds a border at the bottom of the navbar */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically center */
+    justify-content: space-between; /* Space out the logo, menu, and search */
+}
+
+.navbar-logo img {
+    height: 60px; /* Adjust as needed */
+    border-radius: 100%;
+    animation: glow 3s ease-in-out infinite alternate;
+
+}
+
+@keyframes glow {
+	0% {box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ffcc, 0 0 20px #00ffcc, 0 0 25px #00ffcc, 0 0 30px #00ffcc, 0 0 35px #00ffcc;} 
+	50% {box-shadow: 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff, 0 0 40px #ff00ff;}
+	100% {box-shadow: 0 0 10px #fff, 0 0 15px #ffff00, 0 0 20px #ffff00, 0 0 25px #ffff00, 0 0 30px #ffff00, 0 0 35px #ffff00, 0 0 40px #ffff00;}
+}
+
+.navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-grow: 1; /* Allow the menu to grow and fill space between logo and search */
+    justify-content: center; /* Center the menu items */
+}
+.nav-item {
+    margin: 0 10px; /* Optional: spacing between nav items */
+}
+
+/* Style the links */
+.nav-item a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits the color from its parent element */
+}
+
+/* Search styling */
+.navbar-search {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Align items vertically center */
+    margin-right: 40px;
+}
+
+.navbar-search input {
+    padding: 5px; /* Optional: padding inside the search input */
+    font-size: 14px; /* Adjust font size */
+}
+
+.navbar-search button {
+    padding: 5px 10px; /* Optional: padding inside the button */
+    margin-left: 5px; /* Spacing between input and button */
+    font-size: 14px; /* Adjust font size */
+}
+
+/* Prevent content from being overlapped by the fixed navbar */
+.content {
+    padding-top: 80px; /* Adjust this value based on the height of your navbar */
+}

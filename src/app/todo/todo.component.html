@@ -1,0 +1,19 @@
+@defer (on timer(500ms)) { <!--Suboptimale oplossing, liever async pipe-->
+<section class="todo">
+    <!-- <div *ngIf="todoList"> -->
+        <app-todocollection 
+        *ngFor="let todo of todoList "
+        [Todo]="todo">
+        
+    </app-todocollection>
+    <!-- </div> -->
+    <ng-template #loading>
+        <p>Condition is false ...</p>
+    </ng-template>
+</section>
+}
+
+<section class="additem">
+    <button  mat-raised-button (click)="openDialog()" id="additem"> Add new to do list item </button>
+</section>
+

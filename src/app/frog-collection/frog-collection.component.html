@@ -1,0 +1,11 @@
+<section class="frog">
+    <img
+      class="frog-photo"
+      [src]="frogInfo.photo"
+      alt="Exterior photo of {{ frogInfo.name }}"
+      crossorigin
+    />
+    <h2 class="heading-info">{{ frogInfo.name }}</h2>
+    <p class="frog-location">Location: {{ frogInfo.location }} </p>
+    <a [routerLink]="['/details', frogInfo.id]">Learn More</a>
+  </section>

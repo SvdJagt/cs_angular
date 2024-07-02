@@ -1,0 +1,7 @@
+.todoitem {
+    border: 1px solid black; /* Adds a solid border around the div */
+    border-radius: 10px; /* Makes the edges slightly rounded */
+    background-color: #d3d3d3; /* Default background color, will be overridden by JavaScript */
+    padding: 20px; /* Adds padding inside the div for better spacing */
+    margin: 20px; /* Adds margin outside the div for better spacing */
+}

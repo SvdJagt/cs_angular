@@ -1,0 +1,36 @@
+
+<article>
+    <img
+      class="frog-photo"
+      [src]="frogInfo?.photo"
+      alt="Exterior photo of {{ frogInfo?.name }}"
+      crossorigin
+    />
+    <section class="frog-description">
+      <h2 class="frog-heading">{{ frogInfo?.name }}</h2>
+      <p class="frog-location">{{ frogInfo?.location }}</p>
+    </section>
+    <section class="frog-features">
+      <h3 class="section-heading">About this froog</h3>
+      <p class="frog-poison"> Poisonous: {{ frogInfo?.poison }}</p>
+    </section>
+
+    <section class="frog-form">
+        <h2 class="section-heading">Give us your opinion on the frog!</h2>
+        <form [formGroup]="opinionForm" (submit)="submitOpinion()">
+          <label for="name">Name</label>
+          <input id="name" type="text" formControlName="name" />
+          
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" />
+
+          <label for="opinion">Opinion</label>
+          <input id="opinion" type="text" formControlName="opinion" />
+
+          <button type="submit" class="primary">React now</button>
+        </form>
+      </section>
+
+    <section id="opinions"></section>
+  </article>
+
