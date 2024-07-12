@@ -1,4 +1,6 @@
 <section appRandomBackground class="todoitem">    
         <h2>{{ Todo.name }}</h2>
         <p class="frog-location">Completed: {{ Todo.isComplete }} </p>
+        <button class="delete-button" (click)="onDelete(Todo.id)">Delete</button>
+        <button class="change-button" (click)="onChange(Todo.id, Todo.name, Todo.isComplete)">Change</button>
 </section>

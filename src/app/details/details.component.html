@@ -18,14 +18,14 @@
     <section class="frog-form">
         <h2 class="section-heading">Give us your opinion on the frog!</h2>
         <form [formGroup]="opinionForm" (submit)="submitOpinion()">
-          <label for="name">Name</label>
-          <input id="name" type="text" formControlName="name" />
+          <label for="name">name</label>
+          <input id="name" type="text" formControlname="name" />
           
           <label for="email">Email</label>
-          <input id="email" type="email" formControlName="email" />
+          <input id="email" type="email" formControlname="email" />
 
           <label for="opinion">Opinion</label>
-          <input id="opinion" type="text" formControlName="opinion" />
+          <input id="opinion" type="text" formControlname="opinion" />
 
           <button type="submit" class="primary">React now</button>
         </form>

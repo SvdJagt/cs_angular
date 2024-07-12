@@ -1,31 +1,31 @@
 {
   "frogs": [
     { "id" : 0,
-      "name": "Blue arrow-poison frog",
+      "Name": "Blue arrow-poison frog",
       "location": "Brazil",
       "photo": "./assets/poison-frog.png",
       "poison": true
     }, 
     { "id" : 1,
-      "name": "Desert Rainfrog",
+      "Name": "Desert Rainfrog",
       "location": "Namibia & South Africa",
       "photo": "./assets/desert-rainfrog.png",
       "poison": true
     }, 
     { "id" : 2,
-      "name": "Glass Frog",
+      "Name": "Glass Frog",
       "location": "Costa Rica",
       "photo": "./assets/glassfrog.png",
       "poison": false
     }, 
     { "id" : 3,
-      "name": "Golden Poison Frog",
+      "Name": "Golden Poison Frog",
       "location": "Colombia",
       "photo": "./assets/golden-poison-frog.png",
       "poison": true
     }, 
     { "id" : 4,
-      "name": "Ornate Horned Frog",
+      "Name": "Ornate Horned Frog",
       "location": "Argentina",
       "photo": "./assets/ornate-hornedfrog.png",
       "poison": false

@@ -1,7 +1,6 @@
-import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {DetailsComponent} from './details/details.component';
-import { TodoComponent } from './todo/todo.component';
+import { Routes } from '@angular/router';
+
 
 const routeConfig: Routes = [
     {
@@ -21,13 +20,18 @@ const routeConfig: Routes = [
     },
     {
       path: 'details/:id',
-      component: DetailsComponent,
       title: 'Frog details',
+      loadComponent: () => import('./details/details.component').then(mod => mod.DetailsComponent)
     },
     {
       path: 'todo',
-      component: TodoComponent,
       title: 'Todo List',
+      loadComponent: () => import("./todo/todo.component").then((m) => m.TodoComponent),
+    },
+    {
+      path: 'contactpage',
+      title: 'Contact Page',
+      loadComponent: () => import("./contactpage/contactpage.component").then((m) => m.ContactpageComponent),
     },
     {
       path: '**',

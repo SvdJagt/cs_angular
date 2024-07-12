@@ -2,7 +2,6 @@ import { Component, OnInit, inject  } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FrogCollectionComponent } from '../frog-collection/frog-collection.component';
 import { Froginfo } from '../froginfo';
-import { FrogsService } from '../frogs.service';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,7 +17,6 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent  implements OnInit {
   data: any;
   frogInfoList: Froginfo[] = [];
-  frogsService : FrogsService = inject(FrogsService);
   filteredFrogList : Froginfo[] = []; 
   route: ActivatedRoute = inject(ActivatedRoute);
   frogSearch: string = "";

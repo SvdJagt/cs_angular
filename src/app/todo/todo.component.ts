@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, Inject, inject, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { Todo } from '../todo';
 import { DataService } from '../data.service';
 import {TodoCollectionComponent} from '../todocollection/todocollection.component';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
 import {
@@ -18,7 +18,6 @@ import {
 } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
@@ -34,6 +33,8 @@ export class TodoComponent {
 
   constructor(private dataService: DataService, public dialog: MatDialog) { }
 
+  
+
   ngOnInit() {
     this.dataService.getAllTodoItems().subscribe(response => {
       this.todoList = response;
@@ -43,19 +44,24 @@ export class TodoComponent {
   });
   }
 
-  name: string = "";
-  complete: boolean = false;
+  newTodo: Todo = {
+    id: 0,
+    name: "",
+    isComplete: false,
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupDialog, {
       width: '250px',
-      data: {}
+      data: {name: this.newTodo.name, isComplete: this.newTodo.isComplete}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.todo = result;
-      console.log(this.todo);
+      this.newTodo.name = result.name;
+      this.newTodo.isComplete = result.isComplete;
+      console.log(this.newTodo);
+      this.dataService.postTodoItem(this.newTodo);
     });
   }
 }
@@ -78,10 +84,15 @@ export class TodoComponent {
   ],
 })
 export class PopupDialog {
-  readonly dialogRef = inject(MatDialogRef<PopupDialog>);
-  readonly data = inject<Todo>(MAT_DIALOG_DATA);
-  readonly name = model(this.data.name);
-  readonly isComplete = model(this.data.isComplete);
+
+  constructor(
+    public dialogRef: MatDialogRef<PopupDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: Todo) {}
+
+  // readonly dialogRef = inject(MatDialogRef<PopupDialog>);
+  // readonly data = inject<Todo>(MAT_DIALOG_DATA);
+  // readonly name = model(this.data.name);
+  // readonly isComplete = model(this.data.isComplete);
 
   onNoClick(): void {
     this.dialogRef.close();
