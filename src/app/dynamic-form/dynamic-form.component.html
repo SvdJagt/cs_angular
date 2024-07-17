@@ -1,17 +1,10 @@
-<!-- <form [formGroup]="dynamicForm">
-    <div *ngFor="let control of formStructure">
-        <label>{{control.label}}</label>
-        <input [type]="control.type" [formControlName]="control.name">
-      </div>
-</form> -->
-
     <div class="form-container">
       <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
         <div >
-          <div  *ngFor="let control of formStructure">
+          <div  *ngFor="let control of formStructure.fields">
             <!-- Text, Textarea & Number -->
             <div class="form-row"
-              *ngIf="['text', 'number', 'textarea'].includes(control.type)"
+              *ngIf="['text', 'number', 'textarea', 'email'].includes(control.type)"
             >
             <div class="form-column label-column">
               <label for="exampleFormControlInput1" >
@@ -44,7 +37,7 @@
               </div>
             </div>
   
-            <!-- Radio Button -->
+            <!-- Radio Button
             <div *ngIf="['radio'].includes(control.type)" class="form-row">
               
                 <div class="form-column label-column">
@@ -71,7 +64,7 @@
                     </div>
             </div>
   
-            <!-- Select  -->
+            -- Select  ->
             <div *ngIf="['select'].includes(control.type)" class="form-row">
                 <div class="form-column label-column">
 
@@ -106,7 +99,7 @@
                         {{ getErrorMessage(control) }}
                     </span>
                 </div>
-            </div>
+            </div> -->
           </div>
         </div>
   

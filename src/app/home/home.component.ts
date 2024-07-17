@@ -28,6 +28,7 @@ export class HomeComponent  implements OnInit {
     this.dataService.getAllFrogInfo().subscribe(response => {
       this.frogInfoList = response;
       this.filteredFrogList = this.frogInfoList;
+      
 
       console.log(this.frogInfoList);
 
@@ -54,3 +55,4 @@ export class HomeComponent  implements OnInit {
   
 
 }
+

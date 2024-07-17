@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Froginfo } from './froginfo';
 import { Todo } from './todo';
+import { IFormStructure } from './form-structure';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class DataService {
   }
 
   public getAllTodoItems(): Observable<Todo[]> {
+    // return this.http.get<Todo[]>(`https://localhost:7128/api/TodoItems/GetTodoItems`);
     return this.http.get<Todo[]>(`https://localhost:7128/api/TodoItems/GetTodoItems`);
+    
   }
 
   public postTodoItem(todo: Todo) : void {
@@ -34,6 +37,11 @@ export class DataService {
 
   public getFrogInfoByID(id: number): Observable<Froginfo> {
     return this.http.get<Froginfo>(`https://localhost:7128/api/TodoItems/GetFrog/${id}`);
+
+  }
+
+  public getForm(name: string): Observable<IFormStructure[]> {
+    return this.http.get<IFormStructure[]>(`https://localhost:7128/api/TodoItems/GetForm/${name}`);
 
   }
 
