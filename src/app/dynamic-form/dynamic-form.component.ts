@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, Validators, MinValidator} from '@angular/forms';
 import { DataService } from '../data.service';
 import { IFormStructure } from '../form-structure';
 
@@ -63,10 +63,14 @@ export class DynamicFormComponent implements OnInit {
           controlValidators.push(Validators.required);
         let validator = numField.numValidation;
         if (validator) {
-          if (validator.validator === 'minvalue')
+          if (validator.validator === 'min')
             controlValidators.push(Validators.min(validator.minvalue));
           if (validator.validator === 'max')
             controlValidators.push(Validators.max(validator.maxvalue));
+          if (validator.name === "minmax")
+            controlValidators.push(Validators.min(validator.minvalue));
+            controlValidators.push(Validators.max(validator.maxvalue));
+
         }
         formGroup[field.name] = [numField.value || '', controlValidators];
       }
@@ -79,37 +83,23 @@ export class DynamicFormComponent implements OnInit {
 
   getErrorMessage(control: any) {
     const formControl = this.dynamicForm.get(control.name);
-
     if (!formControl) {
       return '';
     }
 
+    if ((control.numField?.required || control.textField?.required) && formControl.hasError("required")) {
+      return "This field is required";
+    }
 
-    if (control.numField) {
-      if (control.numField.required) {
-        if (formControl.hasError("required")) {
-          return "this field is required";
-        }
-      }
-
-      let validation = control.numField.numValidation;
-      if (formControl.hasError(validation.validator)) {
+    let validation = control.numField?.numValidation || control.textField?.textValidation;
+    if (validation.name === "minmax") {
+      if (formControl.hasError("min") || formControl.hasError("max")) {
         return validation.message;
       }
     }
-
-    if (control.textField){
-      if (control.textField.required) {
-        if (formControl.hasError("required")) {
-          return "this field is required";
-        }
-      }
-      let validation = control.textField.textValidation;
-      if (formControl.hasError(validation.validator)) {
-        return validation.message;
-      }
-
-    } 
+    if (formControl.hasError(validation.validator)) {
+      return validation.message;
+    }
 
     return '';
   }

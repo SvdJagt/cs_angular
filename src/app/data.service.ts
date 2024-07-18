@@ -12,17 +12,17 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getAllFrogInfo(): Observable<Froginfo[]> {
-    return this.http.get<Froginfo[]>(`https://localhost:7128/api/TodoItems/GetFrogs`);
+    return this.http.get<Froginfo[]>(`https://localhost:7128/api/Frogs`);
   }
 
   public getAllTodoItems(): Observable<Todo[]> {
     // return this.http.get<Todo[]>(`https://localhost:7128/api/TodoItems/GetTodoItems`);
-    return this.http.get<Todo[]>(`https://localhost:7128/api/TodoItems/GetTodoItems`);
+    return this.http.get<Todo[]>(`https://localhost:7128/api/TodoItems`);
     
   }
 
   public postTodoItem(todo: Todo) : void {
-    this.http.post(`https://localhost:7128/api/TodoItems/PostTodoItem`, todo).subscribe();
+    this.http.post(`https://localhost:7128/api/TodoItems`, todo).subscribe();
   }
 
   public deleteTodoItem(id: number) : void {
@@ -36,12 +36,12 @@ export class DataService {
   
 
   public getFrogInfoByID(id: number): Observable<Froginfo> {
-    return this.http.get<Froginfo>(`https://localhost:7128/api/TodoItems/GetFrog/${id}`);
+    return this.http.get<Froginfo>(`https://localhost:7128/api/Frogs/${id}`);
 
   }
 
   public getForm(name: string): Observable<IFormStructure[]> {
-    return this.http.get<IFormStructure[]>(`https://localhost:7128/api/TodoItems/GetForm/${name}`);
+    return this.http.get<IFormStructure[]>(`https://localhost:7128/api/Forms/${name}`);
 
   }
 
