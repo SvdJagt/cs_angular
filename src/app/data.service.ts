@@ -40,8 +40,8 @@ export class DataService {
 
   }
 
-  public getForm(name: string): Observable<IFormStructure[]> {
-    return this.http.get<IFormStructure[]>(`https://localhost:7128/api/Forms/${name}`);
+  public getForm(name: string): Observable<IFormStructure> {
+    return this.http.get<IFormStructure>(`https://localhost:7128/api/Forms/${name}`);
 
   }
 

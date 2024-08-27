@@ -1,2 +1,2 @@
 <p>contactpage works!</p>
-<app-dynamic-form></app-dynamic-form>
+<app-dynamic-form [formName]="formName" (newItemEvent)="formSubmit($event)"></app-dynamic-form>

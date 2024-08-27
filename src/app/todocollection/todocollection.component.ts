@@ -57,7 +57,6 @@ export class TodoCollectionComponent {
         console.log(this.changedTodo);
         this.dataService.changeTodoItem(id, this.changedTodo);
       });
-      alert("item changed");
     }
 }
   

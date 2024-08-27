@@ -3,8 +3,8 @@
         <div >
           <div  *ngFor="let control of formStructure.fields">
             <!-- Text, Textarea & Number -->
-            <div class="form-row"
-              *ngIf="['text', 'number', 'textarea', 'email'].includes(control.type)"
+            <!-- <div class="form-row"
+              *ngIf="['text', 'number', 'textarea', 'email', 'password'].includes(control.type)"
             >
             <div class="form-column label-column">
               <label for="exampleFormControlInput1" >
@@ -35,7 +35,7 @@
                     {{ getErrorMessage(control) }}
                 </span>
               </div>
-            </div>
+            </div> -->
   
             <!-- Radio Button
             <div *ngIf="['radio'].includes(control.type)" class="form-row">
@@ -62,10 +62,10 @@
                         >
                     </div>
                     </div>
-            </div>
+            </div> -->
   
-            -- Select  ->
-            <div *ngIf="['select'].includes(control.type)" class="form-row">
+            <!-- Select  -->
+            <div *ngIf="['lookupselect', 'select'].includes(control.type)" class="form-row">
                 <div class="form-column label-column">
 
                     <label for="exampleFormControlInput1" >
@@ -78,18 +78,25 @@
                         class="form-select"
                         aria-label="Default select example"
                         [formControlName]="control.name"
-                    >
-                        <option selected>-Select-</option>
+                        >
+                        <!-- #selectfield (change)="onSelected(control.name, selectfield.value)" -->
+                        <!-- <option selected>-Select-</option> -->
                         <option
-                        *ngFor="let option of control.options"
+                        *ngFor="let option of control.lookupSelectField?.options"
                         [value]="option.value"
                         >
-                        {{ option.label }}
+                        {{ option.displayValue }}
+                        </option>
+                        <option
+                        *ngFor="let option of control.selectField?.options"
+                        [value]="option.value"
+                        >
+                        {{ option.displayValue }}
                         </option>
                     </select>
                 </div>
                 <div class="form-column error-column">
-
+                    <!-- <p>You select your team {{ selectedTeam }} using change event</p> -->
                     <span
                         *ngIf="
                         dynamicForm.controls[control.name]?.invalid &&
@@ -99,7 +106,7 @@
                         {{ getErrorMessage(control) }}
                     </span>
                 </div>
-            </div> -->
+            </div> 
           </div>
         </div>
   

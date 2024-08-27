@@ -6,19 +6,15 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-contactpage',
+  selector: 'app-login-register',
   standalone: true,
   imports: [DynamicFormComponent, CommonModule],
-  templateUrl: './contactpage.component.html',
-  styleUrl: './contactpage.component.css'
+  templateUrl: './login-register.component.html',
+  styleUrl: './login-register.component.css'
 })
-export class ContactpageComponent {
+export class LoginRegisterComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
-  formName: string = "contact";
+  LoginForm: string = "login";
+  RegisterForm: string = "register";
 
-
-  formSubmit(formValues: Object) {
-    console.log("in the parent component with the form values");
-    console.log(formValues);
-  }
 }

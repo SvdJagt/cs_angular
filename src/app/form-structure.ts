@@ -8,9 +8,9 @@ export interface IFormStructure {
     type: string;
     label: string;
     name: string;
+    value: string;
     textField?: {
       field: string;
-      value: string;
       textValidation?: {
         name: string;
         validator: string;
@@ -21,7 +21,6 @@ export interface IFormStructure {
     };
     numField?: {
       field: string;
-      value: string;
       numValidation?: {
         name: string;
         validator: string;
@@ -35,7 +34,19 @@ export interface IFormStructure {
       field: string;
       lookupTable: string;
       lookupWhere: string;
+      options: { 
+        displayValue: string;
+        value: string;
+      }[]    
     };
+    lookupSelectField?: {
+      field: string;
+      lookupCode: string;
+      options: { 
+        displayValue: string;
+        value: string;
+      }[]    
+    }
   }[];
 }
 

@@ -34,6 +34,11 @@ const routeConfig: Routes = [
       loadComponent: () => import("./contactpage/contactpage.component").then((m) => m.ContactpageComponent),
     },
     {
+      path: 'login',
+      title: 'Login/Register',
+      loadComponent: () => import("./login-register/login-register.component").then((m) => m.LoginRegisterComponent),
+    },
+    {
       path: '**',
       redirectTo: '/home',
       pathMatch: 'full'
