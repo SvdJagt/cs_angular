@@ -3,7 +3,7 @@
         <div >
           <div  *ngFor="let control of formStructure.fields">
             <!-- Text, Textarea & Number -->
-            <!-- <div class="form-row"
+            <div class="form-row"
               *ngIf="['text', 'number', 'textarea', 'email', 'password'].includes(control.type)"
             >
             <div class="form-column label-column">
@@ -35,7 +35,7 @@
                     {{ getErrorMessage(control) }}
                 </span>
               </div>
-            </div> -->
+            </div>
   
             <!-- Radio Button
             <div *ngIf="['radio'].includes(control.type)" class="form-row">
@@ -79,7 +79,7 @@
                         aria-label="Default select example"
                         [formControlName]="control.name"
                         >
-                        <!-- #selectfield (change)="onSelected(control.name, selectfield.value)" -->
+                        
                         <!-- <option selected>-Select-</option> -->
                         <option
                         *ngFor="let option of control.lookupSelectField?.options"
@@ -96,7 +96,6 @@
                     </select>
                 </div>
                 <div class="form-column error-column">
-                    <!-- <p>You select your team {{ selectedTeam }} using change event</p> -->
                     <span
                         *ngIf="
                         dynamicForm.controls[control.name]?.invalid &&

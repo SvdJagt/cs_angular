@@ -85,7 +85,9 @@ export class DynamicFormComponent implements OnInit {
 
         let selectField = field.selectField;
         if (selectField){
-          formGroup[field.name] = [field.value || ''];
+          controlValidators.push(Validators.required);
+
+          formGroup[field.name] = [field.value || '', controlValidators];
         }
         let lookupSelectField = field.lookupSelectField;
         if (lookupSelectField){
@@ -95,7 +97,6 @@ export class DynamicFormComponent implements OnInit {
       });
 
       this.dynamicForm = this.formBuilder.group(formGroup);
-      console.log(this.dynamicForm);
     });
   }
 
@@ -106,7 +107,7 @@ export class DynamicFormComponent implements OnInit {
       return '';
     }
 
-    if ((control.numField?.required || control.textField?.required) && formControl.hasError("required")) {
+    if ((control.numField?.required || control.textField?.required || control.selectField) && formControl.hasError("required")) {
       return "This field is required";
     }
 
@@ -130,11 +131,10 @@ export class DynamicFormComponent implements OnInit {
 	// }
 
   onSubmit() {
-    console.log("submitted");
-    // if (!this.dynamicForm.valid) {
-    //   this.dynamicForm.markAllAsTouched();
-    //   return;
-    // }
+    if (!this.dynamicForm.valid) {
+      this.dynamicForm.markAllAsTouched();
+      return;
+    }
     
     let formValues = this.dynamicForm.value;
     //let formValues = selectedOption.value;
